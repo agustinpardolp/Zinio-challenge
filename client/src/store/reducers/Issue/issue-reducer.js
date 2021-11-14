@@ -1,5 +1,4 @@
 import types from "../../actions/issuesActions/types";
-
 import { REQUEST_STATUS } from "../../../constants";
 
 export const issue = (
@@ -10,7 +9,7 @@ export const issue = (
   },
   action
 ) => {
-  const { payload: { data, error } = {} } = action;
+  const { payload: { data, error, redirect } = {} } = action;
   switch (action.type) {
     case types.FETCH_ISSUE_BY_ID_REQUEST:
       return {
@@ -24,6 +23,7 @@ export const issue = (
     case types.FETCH_ISSUE_BY_ID_FAILURE:
       return {
         error: error,
+        redirect: redirect,
         status: REQUEST_STATUS.FAILED,
       };
     default:

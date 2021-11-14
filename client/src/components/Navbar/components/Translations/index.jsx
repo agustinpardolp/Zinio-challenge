@@ -10,7 +10,6 @@ const Translations = ({ handleChangeLanguage }) => {
       <span>
         <FormattedMessage id="navbar.translate" />
       </span>
-
       <TranslateContainer>
         <i className="fas fa-language"></i>
         <ul>

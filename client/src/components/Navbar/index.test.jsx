@@ -10,6 +10,6 @@ import Navbar from '.';
 describe('Navbar', () => {
   render(getFullWrappedComponent(Navbar));
   test('Render component correctly', async () => {
-    expect(await screen.findByText('Panel de control de documentos')).toBeInTheDocument();
+    expect(await screen.findByText('Panel de control Incidencias')).toBeInTheDocument();
   });
 });

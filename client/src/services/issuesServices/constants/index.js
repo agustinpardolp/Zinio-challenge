@@ -1,1 +1,2 @@
-export const ISSUES_ENDPOINT = `${process.env.REACT_APP_API_BASE_URL}/issues/`;
+export const ISSUES_ENDPOINT = `http://localhost:3200/zinio-api`;
+export const ISSUES = "/issues"

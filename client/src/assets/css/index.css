@@ -31,4 +31,9 @@ h6 {
   font-size: 100%;
   font-weight: 400;
 }
-
+.card-grid.ui.relaxed.four.column.grid {
+  grid-column-gap: 15px;
+}
+.card-grid.ui.relaxed.four.column.grid .ui.card {
+  margin-top: 0;
+}

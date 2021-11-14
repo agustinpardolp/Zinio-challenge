@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyledCardGrid } from "./styled-components";
+import { Grid } from "semantic-ui-react";
 
-const CardGrid = ({ children }) => <StyledCardGrid>{children}</StyledCardGrid>;
+const CardGrid = ({ children }) =>
+  <Grid centered relaxed columns={4} className='card-grid'>
+    {children}
+  </Grid>
 
 export default CardGrid;
 

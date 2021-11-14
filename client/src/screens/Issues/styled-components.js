@@ -10,7 +10,7 @@ const StyledNoData = styled.div`
     margin-right: 5px;
   }
 `;
-const StyledFilterContainer = styled.div`
+const StyledSearchContainer = styled.div`
   margin: 30px 0;
 `;
-export { StyledNoData, StyledFilterContainer };
+export { StyledNoData, StyledSearchContainer };

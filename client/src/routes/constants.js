@@ -1,5 +1,6 @@
 export const routes = {
   any: '/*',
-  issues: '/issues'
+  issues: '/issues',
+  error404: '/error-404',
 };
 

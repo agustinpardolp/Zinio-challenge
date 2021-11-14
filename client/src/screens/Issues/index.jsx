@@ -1,39 +1,34 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useCallback } from "react";
 import { connect } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { FormattedMessage, useIntl } from "react-intl";
 import CardGrid from "../../components/CardGrid";
 import ViewWrapper from "../../components/ViewWrapper";
 import { fetchIssues } from "../../store/actions/issuesActions";
-import useDocuments from "../../hooks/useFilters";
-import { StyledNoData, StyledFilterContainer } from "./styled-components";
-import { photoCardHeight } from "./constants";
+import useFilters from "../../hooks/useFilters";
+import { StyledNoData, StyledSearchContainer } from "./styled-components";
+import { cardHeight } from "./constants";
 
 import { routes } from "../../routes/constants";
-import { typeOptions } from "./components/Filter/constants";
-import Modal from "../../components/Modal";
-import { useModal } from "../../hooks/useModal";
-import Search from "./components/Filter";
+import Search from "./components/Search";
 import Card from "../../components/Card";
+import Spinner from "../../components/Spinner";
+import { REQUEST_STATUS } from "../../constants";
 
-const Issues = ({ issuesList, fetchIssues }) => {
+const Issues = ({ issuesList, fetchIssues, status }) => {
   const history = useHistory();
-  const { type } = useParams();
   const intl = useIntl();
 
-  const { handleSelectChange, handleDocumentById } = useDocuments();
-  const { showModal, hideModal } = useModal(false);
+  const { handleDataChange, query } = useFilters();
 
-  useEffect(() => { 
-    fetchIssues('')
+  useEffect(() => {
+    fetchIssues(query)
+  }, [query]);
 
-  }, []);
-
-  const handleDetail = (id) => {
+  const handleDetail = useCallback((id) => {
     history.push(`${routes.issues}/${id}`);
-  };
-
+  }, []);
   const onRenderList = useMemo(
     () =>
       issuesList?.length ? (
@@ -43,7 +38,7 @@ const Issues = ({ issuesList, fetchIssues }) => {
               title={value.name}
               key={value.id}
               imgUrl={`/images/${value.cover_image}`}
-              height={photoCardHeight}
+              height={cardHeight}
               onClick={handleDetail}
               value={value}
               effect
@@ -61,7 +56,7 @@ const Issues = ({ issuesList, fetchIssues }) => {
           </span>
         </StyledNoData>
       ),
-    [issuesList]
+    [issuesList, intl]
   );
   return (
     <>
@@ -70,29 +65,25 @@ const Issues = ({ issuesList, fetchIssues }) => {
           { id: "subtitle.issues" },
         )}
       >
-        <StyledFilterContainer>
-          <Search handleChange={handleSelectChange} options={typeOptions} />
-        </StyledFilterContainer>
-
-        <>{onRenderList}</>
-        <Modal
-          show={showModal}
-          onConfirm={() => { }}
-          onHide={hideModal}
-          label="document.modal.delete"
-          width="30vw"
-        />
+        <StyledSearchContainer>
+          <Search handleChange={handleDataChange} />
+        </StyledSearchContainer>
+        {status === REQUEST_STATUS.LOADING ? (
+          <Spinner />
+        ) : (
+          <>{onRenderList}</>
+        )}
       </ViewWrapper>
     </>
   );
 };
 export const mapStateToProps = (state) => {
   const {
-    issues: { data: issuesList },
+    issues: { data: issuesList, status },
   } = state;
-  console.log(state)
   return {
     issuesList,
+    status
   };
 };
 export const mapDispatchToProps = {
@@ -103,13 +94,13 @@ export default connect(mapStateToProps, mapDispatchToProps)(Issues);
 Issues.propTypes = {
   issuesList: PropTypes.arrayOf(
     PropTypes.shape({
-      document: {
+      issue: {
         id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        text: PropTypes.string.isRequired,
-        date: PropTypes.instanceOf(Date),
-        img: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        cover_image: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
       },
     })
   ).isRequired,
+  status: PropTypes.bool,
 };

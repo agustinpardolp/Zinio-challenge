@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { StyledButton } from "./styled-components";
+import { handleVariant } from "./constants";
 
 const Button = ({
   onClick,
@@ -11,32 +12,7 @@ const Button = ({
   width,
   disabled,
 }) => {
-  const handleVariant = (variant) => {
-    let settings = {
-      borderColor: "var(--emerald)",
-    };
-    switch (variant) {
-      case "confirm":
-        settings = {
-          borderColor: "var(--emerald)",
-        };
-        break;
-      case "cancel":
-        settings = {
-          borderColor: "var(--cardinal)",
-        };
-        break;
-      case "disabled":
-        settings = {
-          borderColor: "var(--silver)",
-        };
-        break;
-      default:
-        return settings;
-    }
 
-    return settings;
-  };
   const buttonSetup = handleVariant(variant);
   return (
     <StyledButton

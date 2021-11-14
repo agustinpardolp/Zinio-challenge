@@ -1,15 +1,11 @@
 import React, { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
-
 import { Context } from '../LenguageWrapper';
-
-
 import {
   StyledNavbar,
   StyledNavbarContainer,
   StyledTitle,
 } from './styled-components';
-import { altImg } from './constants';
 import Translations from './components/Translations';
 
 const Navbar = () => {

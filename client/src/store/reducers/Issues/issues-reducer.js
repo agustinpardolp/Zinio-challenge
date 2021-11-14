@@ -1,5 +1,4 @@
 import types from "../../actions/issuesActions/types";
-
 import { REQUEST_STATUS } from "../../../constants";
 
 export const issues = (

@@ -5,14 +5,15 @@ export const fetchIssuesRequest = () => ({
   type: types.FETCH_ISSUES_REQUEST,
 });
 
-const fetchIssuesSuccess = (data) => ({
+const fetchIssuesSuccess = (data) => {
+  return({
   type: types.FETCH_ISSUES_SUCCESS,
   payload: data,
-});
+})}
 
-const fetchIssuesFailure = (data) => ({
+const fetchIssuesFailure = (error) => ({
   type: types.FETCH_ISSUES_FAILURE,
-  payload: data,
+  payload: error,
 });
 
 export const fetchIssues = (query) => (dispatch) => {
@@ -32,15 +33,19 @@ const fetchIssuesByIdSuccess = (data) => ({
   payload: data,
 });
 
-const fetchIssuesByIdFailure = (data) => ({
+export const fetchIssuesByIdFailure = (error) => ({
   type: types.FETCH_ISSUE_BY_ID_FAILURE,
-  payload: data,
+  payload: error,
 });
 
-export const fetchIssuesById = (id) => (dispatch) => {
+export const fetchIssuesById = (id, redirect) => (dispatch) => {
   dispatch(fetchIssuesByIdRequest());
   return issuesServices
     .fetchIssuesById(id)
     .then((data) => dispatch(fetchIssuesByIdSuccess(data)))
-    .catch((error) => dispatch(fetchIssuesByIdFailure(error)));
+    .catch((error) => {
+      return dispatch(
+        fetchIssuesByIdFailure({ error: error.message, redirect })
+      );
+    });
 };

@@ -6,7 +6,6 @@ const Input = ({
   placeholder,
   handleChange,
   type = "text",
-  keyValue,
   name,
   width,
   height,
@@ -16,10 +15,11 @@ const Input = ({
   label,
   icon
 }) => (
+
   <StyledInput
     id="standard-basic"
     placeholder={placeholder}
-    onChange={(e) => handleChange(e, keyValue)}
+    onChange={handleChange}
     type={type}
     aria-label={name}
     name={name}
@@ -32,6 +32,7 @@ const Input = ({
     label={label}
     icon={icon}
   />
+
 );
 
 export default Input;
