@@ -1,0 +1,34 @@
+:root {
+  --white: #fff;
+  --shark: #232629;
+  --emerald: #39c162;
+  --seashell: #f1f0f0;
+  --cardinal: #c2242d;
+  --ming: #33607a;
+  --silver: #c4c4c4;
+  --fontVar: "Fira Sans", sans-serif;
+}
+
+/* Normalizes margin, padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--fontVar);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Normalizes font-size for headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 400;
+}
+

@@ -1,0 +1,24 @@
+{
+  "navbar.title": "Issues Control Panel",
+  "subtitle.issues": "Issues List",
+
+  "card.status": "Status",
+  "card.noResult": "No results",
+  "card.detail": "See detail",
+  "card.type": "Type",
+
+  "issues.back": "Back to list",
+  "issues.input.placeholder.title": "Title",
+  "issues.input.placeholder.text": "text",
+  "issues.input.error": "Invalid character",
+  "issue.description.title": "Issue description",
+  
+  "navbar.english": "EN",
+  "navbar.spanish": "ES",
+
+  "input.search.placeholder": "Search issue",
+
+  "navbar.translate": "Language",
+
+  "footer.title": "Develop in React - 2021"
+}

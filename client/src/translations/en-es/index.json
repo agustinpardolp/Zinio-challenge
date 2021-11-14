@@ -1,0 +1,26 @@
+{
+  "navbar.title": "Panel de control Incidencias",
+  "subtitle.issues": "Listado de incidencias",
+
+  "card.status": "Estado",
+  "card.noResult": "No hay resultados",
+  "card.detail": "Ver detalle",
+  "card.type": "Tipo",
+
+  "issues.back": "Volver al listado",
+  "issues.input.placeholder.title": "Titulo",
+  "issues.input.placeholder.text": "Texto",
+  "issues.input.placeholder.date": "Fecha",
+  "issues.input.error": "Caracter no válido",
+  "issue.description.title": "Descripción de la incidencia",
+
+
+  "navbar.english": "EN",
+  "navbar.spanish": "ES",
+
+  "input.search.placeholder": "Buscar incidencia",
+
+  "navbar.translate": "Idioma",
+
+  "footer.title": "Desarrollado en React - 2021"
+}
