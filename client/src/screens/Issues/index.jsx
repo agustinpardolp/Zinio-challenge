@@ -101,6 +101,6 @@ Issues.propTypes = {
         description: PropTypes.string.isRequired,
       },
     })
-  ).isRequired,
-  status: PropTypes.bool,
+  ),
+  status: PropTypes.string,
 };

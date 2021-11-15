@@ -16,6 +16,7 @@ const Search = ({ handleChange }) => {
         label={`${intl.formatMessage({ id: 'input.search.placeholder' })}...`}
         handleChange={handleChange}
         icon='search'
+        type="text"
       />
     </StyledSearchContainer>
   )
@@ -23,7 +24,7 @@ const Search = ({ handleChange }) => {
 
 export default Search;
 Search.propTypes = {
-  handleInputChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 
